@@ -18,7 +18,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = ProjApplication.class)
+@SpringBootTest
 public class AgreementTest {
 
     @Mock
