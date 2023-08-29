@@ -39,17 +39,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-
-//    @Bean
-//    JwtDecoder jwtDecoder() {
-//        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder) JwtDecoders.fromOidcIssuerLocation(issuer);
-//
-//        OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(audience);
-//        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
-//        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator);
-//
-//        jwtDecoder.setJwtValidator(withAudience);
-//        return jwtDecoder;
-//    }
 }
