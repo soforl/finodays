@@ -21,4 +21,12 @@ public class User {
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<BankConnection> bankConnections;
+
+
+    public User(String email) {
+        this.email = email;
+    }
+
+    public User() {
+    }
 }

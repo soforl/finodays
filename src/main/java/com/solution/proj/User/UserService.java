@@ -14,4 +14,12 @@ public class UserService {
         }
         return user;
     }
+
+    public void saveUser(String email) throws Exception {
+        if (userRepository.findByEmail(email) != null){
+            throw new Exception("User was saved previously");
+        }
+        userRepository.save(new User(email));
+    }
+
 }
