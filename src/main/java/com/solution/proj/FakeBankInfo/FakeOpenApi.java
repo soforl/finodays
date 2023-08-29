@@ -1,6 +1,10 @@
 package com.solution.proj.FakeBankInfo;
 
 import com.solution.proj.AccountDto.*;
+import com.solution.proj.ProductDto.AllProductsResponseDto;
+import com.solution.proj.ProductDto.BrandDto;
+import com.solution.proj.ProductDto.ProductDataDto;
+import com.solution.proj.ProductDto.ProductDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,7 +13,11 @@ import java.util.List;
 @Service
 public class FakeOpenApi implements OpenAPIService{
     @Override
-    public AllAccountsResponseDto getAccounts() {
+    public AllAccountsResponseDto getAccounts(String token) {
+        return AccountInfo();
+    }
+
+    private AllAccountsResponseDto AccountInfo() {
         DataDto data = new DataDto();
 
         AllAccountsResponseDto responseDto = new AllAccountsResponseDto();
@@ -92,6 +100,49 @@ public class FakeOpenApi implements OpenAPIService{
 
         RiskDto risk = new RiskDto();
         responseDto.setRisk(risk);
+
+        return responseDto;
+    }
+
+    @Override
+    public AllAccountsResponseDto getAccountById(String token, String accountId) {
+        return AccountInfo();
+    }
+
+    @Override
+    public AllProductsResponseDto getProducts() {
+        AllProductsResponseDto responseDto = new AllProductsResponseDto();
+
+        BrandDto brandDto = new BrandDto();
+        brandDto.setBrandName("МойБанкГрупп");
+        brandDto.setApplicationUri("https://mybank.ru/products/credit-card/applay");
+
+        List<ProductDto> products = new ArrayList<>();
+        ProductDto productDto = new ProductDto();
+        productDto.setProductId("022eaab4-568b-4635-a5fb-fe91153e6cd6");
+        productDto.setProductName("МойПродукт");
+        productDto.setProductType("creditCard");
+        productDto.setProductVersion("13.201.001-rls");
+        productDto.setBrand(brandDto);
+        products.add(productDto);
+
+        ProductDataDto productDataDto = new ProductDataDto();
+        productDataDto.setProducts(products);
+
+        responseDto.setData(productDataDto);
+
+        LinksDto linksDto = new LinksDto();
+        linksDto.setSelf("http://example.com");
+        linksDto.setFirst("http://example.com");
+        linksDto.setPrev("http://example.com");
+        linksDto.setNext("http://example.com");
+        linksDto.setLast("http://example.com");
+
+        responseDto.setLinks(linksDto);
+
+        MetaDto meta = new MetaDto();
+        meta.setTotalPages(0);
+        responseDto.setMeta(meta);
 
         return responseDto;
     }
