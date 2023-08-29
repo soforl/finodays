@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/userCredit")
 public class UserCreditController {
@@ -20,13 +22,13 @@ public class UserCreditController {
     }
 
     @GetMapping("/allAccounts")
-    public ResponseEntity<?> getAllAccountsInfo(Authentication authentication) throws Exception {
+    public ResponseEntity<List<UserCreditAccountDto>> getAllAccountsInfo(Authentication authentication) throws Exception {
         var user = userService.findUserByUsername(authentication.getName());
         return ResponseEntity.ok(userCreditService.getAllAccounts(user));
     }
 
     @GetMapping("/accountById")
-    public ResponseEntity<?> getAccountById(Authentication auth,
+    public ResponseEntity<UserCreditAccountDto> getAccountById(Authentication auth,
                                             @RequestParam String accountId) throws Exception {
         var user = userService.findUserByUsername(auth.getName());
         return ResponseEntity.ok(userCreditService.getAccountById(user, accountId));
