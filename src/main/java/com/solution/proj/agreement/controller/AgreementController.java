@@ -2,17 +2,10 @@ package com.solution.proj.agreement.controller;
 
 import com.solution.proj.User.User;
 import com.solution.proj.User.UserService;
-import com.solution.proj.agreement.dto.response.AgreementResponse;
 import com.solution.proj.agreement.entity.Agreement;
 import com.solution.proj.agreement.service.AgreementService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

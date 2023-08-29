@@ -2,12 +2,9 @@ package com.solution.proj.lesson.controller;
 
 import com.solution.proj.lesson.dto.LessonDto;
 import com.solution.proj.lesson.dto.LessonsDto;
-import com.solution.proj.lesson.entity.Lesson;
 import com.solution.proj.lesson.service.LessonService;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;

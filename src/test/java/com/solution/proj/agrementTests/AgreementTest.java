@@ -1,6 +1,5 @@
 package com.solution.proj.agrementTests;
 
-import com.solution.proj.ProjApplication;
 import com.solution.proj.User.User;
 import com.solution.proj.agreement.entity.Agreement;
 import com.solution.proj.agreement.repository.JpaAgreementRepository;
