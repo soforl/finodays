@@ -1,6 +1,7 @@
 package com.solution.proj.FakeBankInfo;
 
 import com.solution.proj.AccountDto.*;
+import com.solution.proj.ProductByIdDto.*;
 import com.solution.proj.ProductDto.AllProductsResponseDto;
 import com.solution.proj.ProductDto.BrandDto;
 import com.solution.proj.ProductDto.ProductDataDto;
@@ -130,6 +131,77 @@ public class FakeOpenApi implements OpenAPIService{
         productDataDto.setProducts(products);
 
         responseDto.setData(productDataDto);
+
+        LinksDto linksDto = new LinksDto();
+        linksDto.setSelf("http://example.com");
+        linksDto.setFirst("http://example.com");
+        linksDto.setPrev("http://example.com");
+        linksDto.setNext("http://example.com");
+        linksDto.setLast("http://example.com");
+
+        responseDto.setLinks(linksDto);
+
+        MetaDto meta = new MetaDto();
+        meta.setTotalPages(0);
+        responseDto.setMeta(meta);
+
+        return responseDto;
+    }
+
+    @Override
+    public AllProductByIdResponseDto getProductById(String productId) {
+        AllProductByIdResponseDto responseDto = new AllProductByIdResponseDto();
+
+        ProductByIdDataDto product =  new ProductByIdDataDto();
+
+        BrandDto brandDto = new BrandDto();
+        brandDto.setApplicationUri("https://mybank.ru/products/credit-card/applay");
+        brandDto.setBrandName("МойБанкГрупп");
+
+        List<TierBandDto> tierBandDtoList = new ArrayList<>();
+        TierBandDto tierBandDto = new TierBandDto();
+        tierBandDto.setAer("5");
+        tierBandDto.setComments(List.of("Информация для клиента"));
+        tierBandDto.setIdentification("₽1000-₽5000");
+        tierBandDto.setTierCurrency("RUB");
+        tierBandDto.setInterestRate("5");
+        tierBandDto.setTierValueMinimum("200.00");
+        tierBandDto.setTierValueMaximum("200.00");
+        tierBandDto.setTierPrimaryValueMinimum("200.00");
+        tierBandDto.setTierPrimaryValueMaximum("200.00");
+        tierBandDto.setTierRemainValueMinimum("200.00");
+        tierBandDto.setTierValueMinTerm(1);
+        tierBandDto.setMinTermPeriod("Month");
+        tierBandDto.setTierValueMaxTerm(10);
+        tierBandDto.setMaxTermPeriod("Month");
+        tierBandDto.setApplicationFrequency("Monthly");
+        tierBandDto.setCalculationFrequency("Monthly");
+        tierBandDtoList.add(tierBandDto);
+
+        List<TierBandSetDto> tierBandSetDtoList = new ArrayList<>();
+        TierBandSetDto tierBandSetDto = new TierBandSetDto();
+        tierBandSetDto.setTierBandMethod("Tiered");
+        tierBandSetDto.setCalculationMethod("SimpleInterest");
+        tierBandSetDto.setDestination("CurrentAccount");
+        tierBandSetDto.setComments(List.of("Информация для клиента"));
+        tierBandSetDto.setTierBand(tierBandDtoList);
+        tierBandSetDtoList.add(tierBandSetDto);
+
+        CreditInterestDto creditInterestDto = new CreditInterestDto();
+        creditInterestDto.setComments(List.of("Информация для клиента"));
+        creditInterestDto.setTierBandSet(tierBandSetDtoList);
+
+        ProductByIdDto productByIdDto = new ProductByIdDto();
+        productByIdDto.setProductId("022eaab4-568b-4635-a5fb-fe91153e6cd6");
+        productByIdDto.setProductName("МойПродукт");
+        productByIdDto.setProductType("creditCard");
+        productByIdDto.setProductVersion("13.201.001-rls");
+        productByIdDto.setBrand(brandDto);
+        productByIdDto.setCreditInterest(creditInterestDto);
+
+        product.setProduct(productByIdDto);
+
+        responseDto.setData(product);
 
         LinksDto linksDto = new LinksDto();
         linksDto.setSelf("http://example.com");
