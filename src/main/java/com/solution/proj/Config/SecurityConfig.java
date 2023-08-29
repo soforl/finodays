@@ -22,6 +22,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
+                                .requestMatchers("/swagger/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .oauth2Login(Customizer.withDefaults()
