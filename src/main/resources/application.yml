@@ -13,3 +13,8 @@ spring:
         provider:
           auth0:
             issuer-uri: https://dev-a1b12a76j5g4edr5.us.auth0.com/
+springdoc:
+  swagger-ui:
+    path: "swagger-ui"
+server:
+  port: 8080
