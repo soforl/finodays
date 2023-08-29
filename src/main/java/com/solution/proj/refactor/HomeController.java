@@ -1,7 +1,5 @@
 package com.solution.proj.refactor;
 
-//import com.solution.proj.user.CustomAuthorizedClientService;
-//import com.solution.proj.user.service.AuthService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
