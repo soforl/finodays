@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,7 +26,8 @@ public class UserCreditController {
     }
 
     @GetMapping("/accountById")
-    public ResponseEntity<?> getAccountById(Authentication auth, String accountId) throws Exception {
+    public ResponseEntity<?> getAccountById(Authentication auth,
+                                            @RequestParam String accountId) throws Exception {
         var user = userService.findUserByUsername(auth.getName());
         return ResponseEntity.ok(userCreditService.getAccountById(user, accountId));
     }
